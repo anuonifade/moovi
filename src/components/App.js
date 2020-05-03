@@ -39,17 +39,12 @@ const reducer = (state, action) => {
 }
 
 const App = () => {
-  // const [loading, setLoading] = useState(true);
-  // const [movies, setMovies] = useState([]);
-  // const [errorMessage, setErrorMessage] = useState(null);
   const [state, dispatch] = useReducer(reducer, initialState);
 
   useEffect(() => {
     fetch(`${MOVIE_API_URL}/?s=man&apikey=${API_KEY}`)
       .then(response => response.json())
       .then(jsonResponse => {
-        // setMovies(jsonResponse.Search);
-        // setLoading(false);
         dispatch({
           type: "SEARCH_MOVIES_SUCCESS",
           payload: jsonResponse.Search
